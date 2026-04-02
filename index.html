@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satyra Miles — Staff Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-2: #3d3d38;
+    --ink-3: #6b6b64;
+    --ink-4: #9b9b92;
+    --paper: #f5f3ee;
+    --paper-2: #edeae3;
+    --paper-3: #e3e0d8;
+    --accent: #2e5b4a;
+    --accent-2: #4a8a72;
+    --accent-warm: #c4633a;
+    --accent-warm-2: #d4845e;
+    --gold: #b89a5a;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(245,243,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--paper-3);
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 30%, rgba(46,91,74,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(196,99,58,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 3rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    color: var(--ink-3);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-2);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink-2);
+    border: 1px solid var(--paper-3);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--ink-3);
+    color: var(--ink);
+  }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 2rem;
+    position: relative;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3/4;
+    background: var(--paper-2);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--paper-3);
+  }
+
+  /* Placeholder art for photo area */
+  .hero-visual-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2rem;
+    background:
+      linear-gradient(160deg, rgba(46,91,74,0.08) 0%, transparent 50%),
+      linear-gradient(to top, rgba(26,26,24,0.04) 0%, transparent 40%);
+  }
+
+  .photo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .photo-placeholder-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--paper-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-placeholder-circle svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.3;
+  }
+
+  .photo-note {
+    font-size: 0.72rem;
+    color: var(--ink-4);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .hero-card {
+    position: absolute;
+    bottom: -1rem;
+    left: -2rem;
+    background: #fff;
+    border: 1px solid var(--paper-3);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(26,26,24,0.08);
+    max-width: 220px;
+    z-index: 2;
+  }
+
+  .hero-card-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .hero-card-stat {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-card-desc {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+
+  /* ─── PROOF BAR ───────────────────────────────────────── */
+  .proof-bar {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .proof-item {
+    padding: 0 2rem;
+    border-left: 1px solid rgba(245,243,238,0.12);
+  }
+
+  .proof-item:first-child { border-left: none; padding-left: 0; }
+
+  .proof-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--paper);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .proof-num span {
+    font-size: 1.5rem;
+    color: var(--accent-2);
+  }
+
+  .proof-label {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.6);
+    line-height: 1.4;
+  }
+
+  /* ─── SECTION SCAFFOLDING ─────────────────────────────── */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .section-sub {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-3);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ─── CASE STUDIES ────────────────────────────────────── */
+  .case-studies { background: #fff; max-width: 100%; }
+  .case-studies > .inner { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
+
+  .case-study {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    padding: 4rem 0;
+    border-top: 1px solid var(--paper-2);
+  }
+
+  .case-study:first-of-type { border-top: none; padding-top: 0; }
+
+  .case-study.reverse { direction: rtl; }
+  .case-study.reverse > * { direction: ltr; }
+
+  .case-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag-clinical { background: rgba(46,91,74,0.1); color: var(--accent); }
+  .tag-brand { background: rgba(184,154,90,0.12); color: var(--gold); }
+  .tag-data { background: rgba(196,99,58,0.1); color: var(--accent-warm); }
+
+  .case-number {
+    font-family: var(--serif);
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--paper-2);
+    line-height: 1;
+    margin-bottom: -1rem;
+    user-select: none;
+  }
+
+  .case-title {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .case-company {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-outcome {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .outcome-chip {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    background: var(--paper);
+    border-radius: var(--radius);
+    border: 1px solid var(--paper-3);
+    min-width: 100px;
+  }
+
+  .outcome-num {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .outcome-label {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--ink-3);
+    line-height: 1.3;
+    margin-top: 0.25rem;
+  }
+
+  .case-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(46,91,74,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .case-link:hover { border-color: var(--accent); }
+
+  /* Case visual mockup */
+  .case-visual {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+
+  /* ─── INLINE SVG MOCKUPS (replaced with img tags) ─────────────── */
+  /* .mockup-svg removed as we now use img */
+
+  /* ─── GALLERY ─────────────────────────────────────────── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    cursor: pointer;
+    group: true;
+  }
+
+  .gallery-item:nth-child(4n+1) { grid-column: span 2; }
+
+  .gallery-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-thumb svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,26,24,0);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+    transition: background 0.3s;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    background: rgba(26,26,24,0.55);
+  }
+
+  .gallery-meta {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s;
+  }
+
+  .gallery-item:hover .gallery-meta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gallery-meta-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+
+  .gallery-meta-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+  }
+
+  /* ─── ABOUT ───────────────────────────────────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-body {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .skill-chip {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    background: var(--paper-2);
+    color: var(--ink-2);
+    border: 1px solid var(--paper-3);
+  }
+
+  .logos-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 1.25rem;
+  }
+
+  .logos-row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .logo-badge {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--ink-3);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--paper-3);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  .about-right {}
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--paper-2);
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 90px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--paper-3);
+  }
+
+  .timeline-year {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--ink-4);
+    padding-top: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .timeline-role {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.1rem;
+  }
+
+  .timeline-co {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    margin-bottom: 0.35rem;
+  }
+
+  .timeline-note {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  /* ─── CONTACT ─────────────────────────────────────────── */
+  .contact-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5rem 3rem;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+
+  .contact-title em { font-style: italic; color: var(--accent-2); }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.6);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-ghost {
+    background: rgba(245,243,238,0.08);
+    color: var(--paper);
+    border: 1px solid rgba(245,243,238,0.15);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(245,243,238,0.14);
+    border-color: rgba(245,243,238,0.3);
+  }
+
+  .btn-green {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-green:hover { background: var(--accent-2); }
+
+  /* ─── AVAILABILITY BADGE ──────────────────────────────── */
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2rem;
+    background: rgba(74,138,114,0.18);
+    color: var(--accent-2);
+    margin-bottom: 2rem;
+  }
+
+  .avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ─── SCROLL REVEAL ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(245,243,238,0.08);
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: rgba(245,243,238,0.4);
+    font-weight: 300;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(245,243,238,0.25);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 3rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .case-studies > .inner { padding: 4rem 1.5rem; }
+    .case-study { grid-template-columns: 1fr; gap: 2.5rem; }
+    .case-study.reverse { direction: ltr; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .proof-bar { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .proof-item { border-left: none; padding: 0; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:nth-child(4n+1) { grid-column: span 1; }
+    .contact-section { padding: 4rem 1.5rem; }
+    footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .proof-bar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Satyra Miles</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Staff Product Designer</div>
+    <h1 class="hero-name">Satyra<br><em>Miles</em></h1>
+    <p class="hero-title">Healthcare & Internal Systems</p>
+    <p class="hero-desc">
+      Ten years designing the tools, workflows, and systems that help clinical and care teams move faster — and more confidently. From frontline advocate tools to executive strategy, I work at the intersection of complex operations and human-centered design.
+    </p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn-primary">View Case Studies</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-visual-art">
+        <div class="photo-placeholder">
+          <div class="photo-placeholder-circle">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="18" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="photo-note">Add your photo here<br>in Carrd's image block</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Key outcome</div>
+      <div class="hero-card-stat">26%</div>
+      <div class="hero-card-desc">workflow efficiency improvement on a high-volume care delivery process</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div class="proof-num">26<span>%</span></div>
+    <div class="proof-label">Workflow efficiency improvement on core care delivery process</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">21<span>%</span></div>
+    <div class="proof-label">Reduction in resolution time through improved workflow clarity</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">10<span>+</span></div>
+    <div class="proof-label">Years designing healthcare and health-tech products</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">4</div>
+    <div class="proof-label">Major healthcare organizations — Amae, Teladoc, One Medical, Cedars-Sinai</div>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<div class="case-studies" id="work">
+  <div class="inner">
+    <div class="section-eyebrow">Case Studies</div>
+    <h2 class="section-title">Selected <em>work</em></h2>
+    <p class="section-sub">Deep dives into the problems I've owned, the processes I've led, and the outcomes that followed.</p>
+
+    <!-- CASE 1 -->
+    <div class="case-study reveal">
+      <div class="case-content">
+        <div class="case-number">01</div>
+        <span class="case-tag tag-clinical">Clinical Workflow Design</span>
+        <h3 class="case-title">Redesigning care delivery workflows for frontline teams</h3>
+        <p class="case-company">Amae Health · 2023–Present</p>
+        <p class="case-body">
+          Frontline Member Care Advocates were navigating a fragmented suite of internal tools, creating friction at every handoff. Tasks that required crossing between systems led to errors, delays, and advocate burnout. I was brought in to own the end-to-end experience — from defining the problem space to shipping modular components that could be deployed without engineering involvement.
+        </p>
+        <p class="case-body">
+          Working directly with Clinical Operations, Data Science, and Product leadership, I led service design workshops and workflow mapping sessions to diagnose the root causes. I defined KPIs and OKRs in partnership with Data Science, designed a modular component framework that enabled clinical leadership to rapidly test new protocols, and influenced the 6–12 month product roadmap.
+        </p>
+        <div class="case-outcome">
+          <div class="outcome-chip">
+            <span class="outcome-num">26%</span>
+            <span class="outcome-label">Workflow efficiency improvement</span>
+          </div>
+          <div class="outcome-chip">
+            <span class="outcome-num">0</span>
+            <span class="outcome-label">Engineering resources needed to deploy new protocols</span>
+          </div>
+          <div class="outcome-chip">
+            <span class="outcome-num">6–12mo</span>
+            <span class="outcome-label">Roadmap influence across clinical tooling</span>
+          </div>
+        </div>
+        <a href="mailto:satyra.ca@gmail.com?subject=Case Study Request" class="case-link">Request the full case study →</a>
+      </div>
+      <div class="case-visual">
+        <img src="case-01.png" style="width:100%;height:100%;object-fit:cover;" alt="Clinical workflow dashboard - Amae Health">
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case-study reverse reveal">
+      <div class="case-content">
+        <div class="case-number">02</div>
+        <span class="case-tag tag-data">Internal Tools · Dashboard Design</span>
+        <h3 class="case-title">Manager-facing dashboards for operational visibility</h3>
+        <p class="case-company">Teladoc Health · 2021–2023</p>
+        <p class="case-body">
+          Care operations managers at Teladoc had no centralized view of team performance. Queue health, case volume, resolution trends, and workflow bottlenecks lived in disconnected reports and spreadsheets. Decisions were reactive, not informed.
+        </p>
+        <p class="case-body">
+          I led the design of a manager-facing dashboard system from discovery through launch — running stakeholder interviews, workflow mapping, and usability testing with operations managers across time zones. The system gave managers real-time visibility into what was working, what wasn't, and where to intervene.
+        </p>
+        <div class="case-outcome">
+          <div class="outcome-chip">
+            <span class="outcome-num">21%</span>
+            <span class="outcome-label">Reduction in case resolution time</span>
+          </div>
+          <div class="outcome-chip">
+            <span class="outcome-num">1</span>
+            <span class="outcome-label">Unified view replacing fragmented reports</span>
+          </div>
+        </div>
+        <a href="mailto:satyra.ca@gmail.com?subject=Case Study Request" class="case-link">Request the full case study →</a>
+      </div>
+      <div class="case-visual">
+        <img src="case-02.png" style="width:100%;height:100%;object-fit:cover;" alt="Manager dashboard - Teladoc Health">
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="case-study reveal">
+      <div class="case-content">
+        <div class="case-number">03</div>
+        <span class="case-tag tag-brand">Brand & Presentation Systems</span>
+        <h3 class="case-title">Scalable presentation system for multi-team storytelling</h3>
+        <p class="case-company">Teladoc Health · 2018–2021</p>
+        <p class="case-body">
+          Marketing, Clinical Leadership, Product Marketing, and internal communications teams at Teladoc each maintained their own slide decks — inconsistently branded, hard to update, and rarely at the quality level needed for executive or external audiences.
+        </p>
+        <p class="case-body">
+          I designed a modular, scalable PowerPoint and Google Slides system adopted across the organization. The work included executive presentation design for leadership reviews and care delivery updates, a reusable infographic and diagram library, and visual systems for translating complex clinical concepts into accessible narratives.
+        </p>
+        <div class="case-outcome">
+          <div class="outcome-chip">
+            <span class="outcome-num">4+</span>
+            <span class="outcome-label">Teams using shared template system</span>
+          </div>
+          <div class="outcome-chip">
+            <span class="outcome-num">Exec</span>
+            <span class="outcome-label">Level presentations for leadership reviews</span>
+          </div>
+        </div>
+        <a href="mailto:satyra.ca@gmail.com?subject=Case Study Request" class="case-link">Request the full case study →</a>
+      </div>
+      <div class="case-visual">
+        <img src="case-03.png" style="width:100%;height:100%;object-fit:cover;" alt="Presentation system - Teladoc Health">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" style="background: var(--paper-2); max-width: 100%; padding: 6rem 3rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-eyebrow">Selected Work</div>
+    <h2 class="section-title">The <em>gallery</em></h2>
+    <p class="section-sub">Infographics, brand assets, dashboards, and visual storytelling artifacts across 10 years of healthcare design.</p>
+
+    <div class="gallery-grid">
+
+      <!-- Item 1 — wide -->
+      <div class="gallery-item reveal">
+        <div class="gallery-thumb" style="aspect-ratio: 16/7;">
+          <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="800" height="350" fill="#1a1a18"/>
+            <!-- Data viz: care pathway infographic -->
+            <rect x="0" y="0" width="800" height="350" fill="#1a1a18"/>
+            <!-- Title -->
+            <rect x="40" y="30" width="200" height="14" rx="3" fill="rgba(255,255,255,0.15)"/>
+            <rect x="40" y="52" width="130" height="8" rx="2" fill="rgba(255,255,255,0.07)"/>
+            <!-- Timeline flow -->
+            <rect x="40" y="110" width="720" height="2" fill="rgba(255,255,255,0.08)"/>
+            <!-- Step nodes -->
+            <circle cx="100" cy="111" r="18" fill="#2e5b4a"/>
+            <rect x="82" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="76" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+
+            <circle cx="220" cy="111" r="18" fill="#4a8a72"/>
+            <rect x="202" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="196" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+
+            <circle cx="340" cy="111" r="18" fill="#b89a5a"/>
+            <rect x="322" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="316" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+
+            <circle cx="460" cy="111" r="18" fill="#c4633a"/>
+            <rect x="442" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="436" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+
+            <circle cx="580" cy="111" r="18" fill="#4a8a72" opacity="0.7"/>
+            <rect x="562" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+
+            <circle cx="700" cy="111" r="18" fill="#2e5b4a" opacity="0.5"/>
+            <rect x="682" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+
+            <!-- Stat callouts -->
+            <rect x="40" y="200" width="160" height="90" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <rect x="56" y="216" width="80" height="22" rx="2" fill="rgba(46,91,74,0.4)"/>
+            <rect x="56" y="246" width="100" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="56" y="258" width="80" height="5" rx="2" fill="rgba(255,255,255,0.12)"/>
+
+            <rect x="220" y="200" width="160" height="90" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <rect x="236" y="216" width="80" height="22" rx="2" fill="rgba(184,154,90,0.4)"/>
+            <rect x="236" y="246" width="100" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
+
+            <rect x="400" y="200" width="360" height="90" rx="8" fill="rgba(46,91,74,0.12)" stroke="rgba(46,91,74,0.3)" stroke-width="0.5"/>
+            <rect x="416" y="216" width="100" height="22" rx="2" fill="rgba(46,91,74,0.4)"/>
+            <rect x="416" y="246" width="140" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="416" y="258" width="120" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="416" y="270" width="100" height="5" rx="2" fill="rgba(255,255,255,0.12)"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-meta">
+            <div class="gallery-meta-title">Care Pathway Infographic</div>
+            <div class="gallery-meta-sub">Patient journey visualization · Amae Health</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="gallery-item reveal">
+        <div class="gallery-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="400" height="225" fill="#f5f3ee"/>
+            <!-- Brand identity sheet -->
+            <rect x="16" y="16" width="180" height="100" rx="6" fill="#2e5b4a"/>
+            <rect x="28" y="30" width="60" height="16" rx="3" fill="rgba(255,255,255,0.9)"/>
+            <rect x="28" y="54" width="100" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="28" y="66" width="80" height="5" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <!-- Color swatches -->
+            <rect x="28" y="88" width="20" height="20" rx="3" fill="rgba(255,255,255,0.9)"/>
+            <rect x="54" y="88" width="20" height="20" rx="3" fill="rgba(184,154,90,0.8)"/>
+            <rect x="80" y="88" width="20" height="20" rx="3" fill="rgba(196,99,58,0.8)"/>
+            <rect x="106" y="88" width="20" height="20" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+            <!-- Type specimens -->
+            <rect x="206" y="16" width="178" height="100" rx="6" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="218" y="28" width="120" height="16" rx="2" fill="#1a1a18" opacity="0.8"/>
+            <rect x="218" y="50" width="90" height="8" rx="2" fill="#1a1a18" opacity="0.5"/>
+            <rect x="218" y="64" width="140" height="5" rx="2" fill="#c5c2ba"/>
+            <rect x="218" y="74" width="120" height="5" rx="2" fill="#c5c2ba"/>
+            <rect x="218" y="84" width="100" height="5" rx="2" fill="#c5c2ba"/>
+            <rect x="218" y="100" width="50" height="8" rx="12" fill="rgba(46,91,74,0.12)"/>
+            <rect x="224" y="103" width="36" height="3" rx="1" fill="#2e5b4a"/>
+
+            <!-- Pattern tile -->
+            <rect x="16" y="126" width="120" height="84" rx="6" fill="#f0ede6" stroke="#e3e0d8" stroke-width="0.8"/>
+            <circle cx="50" cy="155" r="12" fill="rgba(46,91,74,0.15)" stroke="rgba(46,91,74,0.3)" stroke-width="0.5"/>
+            <circle cx="80" cy="168" r="8" fill="rgba(184,154,90,0.2)"/>
+            <circle cx="110" cy="152" r="5" fill="rgba(196,99,58,0.15)"/>
+            <rect x="28" y="186" width="90" height="5" rx="2" fill="#c5c2ba"/>
+            <rect x="28" y="196" width="70" height="5" rx="2" fill="#e3e0d8"/>
+
+            <!-- Icon set -->
+            <rect x="146" y="126" width="238" height="84" rx="6" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="158" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
+            <rect x="196" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
+            <rect x="234" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
+            <rect x="272" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
+            <rect x="310" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
+            <rect x="158" y="176" width="30" height="4" rx="1" fill="#e3e0d8"/>
+            <rect x="196" y="176" width="30" height="4" rx="1" fill="#e3e0d8"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-meta">
+            <div class="gallery-meta-title">Brand Identity System</div>
+            <div class="gallery-meta-sub">Visual language & guidelines · One Medical</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="gallery-item reveal">
+        <div class="gallery-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="400" height="225" fill="#fff"/>
+            <!-- Executive deck slide -->
+            <rect x="16" y="16" width="370" height="194" rx="8" fill="#1a1a18"/>
+            <!-- Slide header -->
+            <rect x="16" y="16" width="370" height="46" rx="8" fill="#2e5b4a"/>
+            <rect x="16" y="48" width="370" height="14" fill="#2e5b4a"/>
+            <rect x="32" y="26" width="180" height="10" rx="2" fill="rgba(255,255,255,0.85)"/>
+            <rect x="32" y="42" width="100" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <!-- 2-col layout -->
+            <rect x="32" y="72" width="160" height="8" rx="2" fill="rgba(255,255,255,0.6)"/>
+            <rect x="32" y="86" width="140" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+            <rect x="32" y="96" width="150" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="32" y="106" width="130" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+            <!-- right chart -->
+            <rect x="210" y="68" width="160" height="100" rx="6" fill="rgba(255,255,255,0.05)"/>
+            <!-- Donut chart approximation -->
+            <circle cx="290" cy="118" r="36" fill="none" stroke="rgba(46,91,74,0.8)" stroke-width="16" stroke-dasharray="120 226"/>
+            <circle cx="290" cy="118" r="36" fill="none" stroke="rgba(74,138,114,0.6)" stroke-width="16" stroke-dasharray="70 226" stroke-dashoffset="-120"/>
+            <circle cx="290" cy="118" r="36" fill="none" stroke="rgba(184,154,90,0.5)" stroke-width="16" stroke-dasharray="36 226" stroke-dashoffset="-190"/>
+            <rect x="278" y="113" width="24" height="10" rx="2" fill="rgba(255,255,255,0.7)"/>
+            <!-- Bottom metric strip -->
+            <rect x="32" y="178" width="340" height="22" rx="4" fill="rgba(255,255,255,0.04)"/>
+            <rect x="42" y="185" width="60" height="5" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="142" y="185" width="60" height="5" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="242" y="185" width="60" height="5" rx="1" fill="rgba(255,255,255,0.2)"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-meta">
+            <div class="gallery-meta-title">Executive Presentation Design</div>
+            <div class="gallery-meta-sub">Leadership review deck · Teladoc Health</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 — wide -->
+      <div class="gallery-item reveal">
+        <div class="gallery-thumb" style="aspect-ratio: 16/7;">
+          <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="800" height="350" fill="#f5f3ee"/>
+            <!-- Data dashboard wide view -->
+            <!-- Left KPIs -->
+            <rect x="20" y="20" width="150" height="310" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="32" y="32" width="80" height="8" rx="2" fill="#1a1a18" opacity="0.6"/>
+            <rect x="32" y="52" width="120" height="60" rx="6" fill="#f5f3ee"/>
+            <rect x="44" y="64" width="60" height="24" rx="2" fill="#2e5b4a" opacity="0.7"/>
+            <rect x="44" y="94" width="80" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="32" y="122" width="120" height="60" rx="6" fill="#f5f3ee"/>
+            <rect x="44" y="134" width="60" height="24" rx="2" fill="#b89a5a" opacity="0.7"/>
+            <rect x="44" y="164" width="80" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="32" y="192" width="120" height="60" rx="6" fill="#f5f3ee"/>
+            <rect x="44" y="204" width="60" height="24" rx="2" fill="#c4633a" opacity="0.7"/>
+            <rect x="44" y="234" width="80" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="32" y="272" width="120" height="48" rx="6" fill="#2e5b4a"/>
+            <rect x="44" y="284" width="60" height="24" rx="2" fill="rgba(255,255,255,0.3)"/>
+
+            <!-- Center: big chart -->
+            <rect x="184" y="20" width="400" height="200" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="198" y="32" width="120" height="8" rx="2" fill="#1a1a18" opacity="0.6"/>
+            <rect x="198" y="48" width="80" height="5" rx="2" fill="#9b9b92"/>
+            <!-- Area chart -->
+            <polyline points="198,185 244,160 290,168 336,142 382,150 428,128 474,135 520,112 540,120 566,100 584,108" fill="none" stroke="#2e5b4a" stroke-width="2" stroke-linecap="round"/>
+            <polygon points="198,185 244,160 290,168 336,142 382,150 428,128 474,135 520,112 540,120 566,100 584,108 584,200 198,200" fill="rgba(46,91,74,0.07)"/>
+            <rect x="198" y="200" width="384" height="1" fill="#e3e0d8"/>
+            <!-- x-axis markers -->
+            <rect x="198" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
+            <rect x="260" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
+            <rect x="322" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
+            <rect x="384" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
+            <rect x="446" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
+            <rect x="508" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
+
+            <!-- Center bottom: table -->
+            <rect x="184" y="230" width="400" height="100" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="198" y="242" width="90" height="7" rx="2" fill="#1a1a18" opacity="0.6"/>
+            <rect x="184" y="258" width="400" height="1" fill="#e3e0d8"/>
+            <rect x="198" y="266" width="80" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="420" y="264" width="50" height="8" rx="12" fill="rgba(46,91,74,0.1)"/>
+            <rect x="427" y="267" width="36" height="3" rx="1" fill="#2e5b4a"/>
+            <rect x="198" y="280" width="60" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="420" y="278" width="50" height="8" rx="12" fill="rgba(196,99,58,0.1)"/>
+            <rect x="427" y="281" width="36" height="3" rx="1" fill="#c4633a"/>
+            <rect x="198" y="294" width="70" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="420" y="292" width="50" height="8" rx="12" fill="rgba(184,154,90,0.12)"/>
+            <rect x="427" y="295" width="36" height="3" rx="1" fill="#b89a5a"/>
+            <rect x="198" y="308" width="65" height="5" rx="2" fill="#9b9b92"/>
+
+            <!-- Right: two small charts -->
+            <rect x="598" y="20" width="182" height="145" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="610" y="32" width="80" height="7" rx="2" fill="#1a1a18" opacity="0.6"/>
+            <!-- Sparklines -->
+            <polyline points="610,110 630,100 650,105 670,88 690,92 710,80 730,85 760,72" fill="none" stroke="#2e5b4a" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="610" y="124" width="160" height="1" fill="#e3e0d8"/>
+            <rect x="610" y="130" width="40" height="5" rx="2" fill="#c5c2ba"/>
+            <rect x="610" y="140" width="60" height="5" rx="2" fill="rgba(46,91,74,0.4)"/>
+
+            <rect x="598" y="175" width="182" height="155" rx="8" fill="#2e5b4a"/>
+            <rect x="610" y="187" width="80" height="7" rx="2" fill="rgba(255,255,255,0.6)"/>
+            <!-- Donut -->
+            <circle cx="689" cy="265" r="40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="18"/>
+            <circle cx="689" cy="265" r="40" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="18" stroke-dasharray="140 251" stroke-linecap="round"/>
+            <rect x="676" y="258" width="26" height="14" rx="2" fill="rgba(255,255,255,0.9)"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-meta">
+            <div class="gallery-meta-title">Data Visualization Dashboard</div>
+            <div class="gallery-meta-sub">KPI reporting system · Teladoc Health</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="gallery-item reveal">
+        <div class="gallery-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="400" height="225" fill="#2e5b4a"/>
+            <!-- Service blueprint / workflow map -->
+            <rect x="16" y="16" width="368" height="14" rx="3" fill="rgba(255,255,255,0.12)"/>
+            <rect x="16" y="16" width="120" height="14" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+            <!-- Swimlanes -->
+            <rect x="16" y="42" width="70" height="164" rx="4" fill="rgba(255,255,255,0.06)"/>
+            <rect x="22" y="54" width="55" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="22" y="66" width="55" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+
+            <!-- Process steps across the top -->
+            <rect x="96" y="42" width="288" height="30" rx="0" fill="rgba(255,255,255,0.04)"/>
+            <rect x="102" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="170" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="238" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="306" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
+
+            <!-- Row 1 (member actions) -->
+            <rect x="96" y="80" width="288" height="36" rx="0" fill="rgba(255,255,255,0.03)"/>
+            <rect x="102" y="88" width="48" height="20" rx="4" fill="rgba(184,154,90,0.5)"/>
+            <rect x="170" y="88" width="48" height="20" rx="4" fill="rgba(184,154,90,0.5)"/>
+            <rect x="238" y="88" width="48" height="20" rx="4" fill="rgba(184,154,90,0.3)"/>
+
+            <!-- Row 2 (care team) -->
+            <rect x="96" y="120" width="288" height="36" rx="0" fill="rgba(255,255,255,0.02)"/>
+            <rect x="102" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.6)"/>
+            <rect x="170" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.6)"/>
+            <rect x="238" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.6)"/>
+            <rect x="306" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.4)"/>
+
+            <!-- Row 3 (system) -->
+            <rect x="96" y="160" width="288" height="36" rx="0" fill="rgba(255,255,255,0.02)"/>
+            <rect x="238" y="168" width="48" height="20" rx="4" fill="rgba(196,99,58,0.5)"/>
+            <rect x="306" y="168" width="48" height="20" rx="4" fill="rgba(196,99,58,0.5)"/>
+
+            <!-- Connectors (horizontal lines) -->
+            <line x1="150" y1="98" x2="170" y2="98" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="218" y1="98" x2="238" y2="98" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="150" y1="138" x2="170" y2="138" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="218" y1="138" x2="238" y2="138" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="286" y1="138" x2="306" y2="138" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-meta">
+            <div class="gallery-meta-title">Service Blueprint</div>
+            <div class="gallery-meta-sub">Care delivery workflow mapping · Amae Health</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="gallery-item reveal">
+        <div class="gallery-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="400" height="225" fill="#f0ede6"/>
+            <!-- Healthcare infographic -->
+            <rect x="16" y="16" width="170" height="194" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="28" y="28" width="100" height="10" rx="2" fill="#1a1a18" opacity="0.7"/>
+            <rect x="28" y="44" width="140" height="5" rx="2" fill="#c5c2ba"/>
+            <rect x="28" y="54" width="120" height="5" rx="2" fill="#e3e0d8"/>
+
+            <!-- Icon + text rows -->
+            <rect x="28" y="72" width="16" height="16" rx="4" fill="#2e5b4a" opacity="0.7"/>
+            <rect x="52" y="75" width="90" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="52" y="84" width="70" height="4" rx="2" fill="#e3e0d8"/>
+
+            <rect x="28" y="100" width="16" height="16" rx="4" fill="#b89a5a" opacity="0.7"/>
+            <rect x="52" y="103" width="90" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="52" y="112" width="70" height="4" rx="2" fill="#e3e0d8"/>
+
+            <rect x="28" y="128" width="16" height="16" rx="4" fill="#c4633a" opacity="0.7"/>
+            <rect x="52" y="131" width="90" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="52" y="140" width="70" height="4" rx="2" fill="#e3e0d8"/>
+
+            <rect x="28" y="156" width="16" height="16" rx="4" fill="#4a8a72" opacity="0.7"/>
+            <rect x="52" y="159" width="90" height="5" rx="2" fill="#9b9b92"/>
+            <rect x="52" y="168" width="70" height="4" rx="2" fill="#e3e0d8"/>
+
+            <rect x="16" y="178" width="170" height="32" rx="4" fill="#2e5b4a"/>
+            <rect x="28" y="188" width="100" height="8" rx="2" fill="rgba(255,255,255,0.5)"/>
+            <rect x="28" y="198" width="70" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+
+            <!-- Right panel -->
+            <rect x="198" y="16" width="186" height="90" rx="8" fill="#2e5b4a"/>
+            <rect x="210" y="28" width="80" height="10" rx="2" fill="rgba(255,255,255,0.8)"/>
+            <!-- Big stat -->
+            <rect x="210" y="46" width="80" height="34" rx="3" fill="rgba(255,255,255,0.2)"/>
+            <rect x="220" y="56" width="56" height="18" rx="2" fill="rgba(255,255,255,0.8)"/>
+            <rect x="210" y="88" width="100" height="5" rx="2" fill="rgba(255,255,255,0.3)"/>
+
+            <rect x="198" y="116" width="90" height="94" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
+            <rect x="210" y="128" width="60" height="7" rx="2" fill="#1a1a18" opacity="0.6"/>
+            <!-- Small bar -->
+            <rect x="210" y="144" width="12" height="52" rx="2" fill="rgba(46,91,74,0.2)"/>
+            <rect x="228" y="130" width="12" height="66" rx="2" fill="rgba(46,91,74,0.4)"/>
+            <rect x="246" y="124" width="12" height="72" rx="2" fill="#2e5b4a"/>
+            <rect x="264" y="136" width="12" height="60" rx="2" fill="rgba(46,91,74,0.5)"/>
+            <rect x="210" y="196" width="66" height="1" fill="#e3e0d8"/>
+
+            <rect x="298" y="116" width="86" height="94" rx="8" fill="#b89a5a"/>
+            <rect x="310" y="128" width="55" height="7" rx="2" fill="rgba(255,255,255,0.6)"/>
+            <rect x="310" y="144" width="40" height="28" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="310" y="178" width="55" height="5" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="310" y="190" width="45" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+          </svg>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-meta">
+            <div class="gallery-meta-title">Health Education Infographic</div>
+            <div class="gallery-meta-sub">Member-facing materials · One Medical</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-eyebrow">About</div>
+  <h2 class="section-title">The designer <em>behind the work</em></h2>
+
+  <div class="about-grid">
+    <div class="about-left">
+      <p class="about-body">
+        I've spent a decade at the intersection of healthcare complexity and human-centered design — working at organizations where the stakes are real and the systems are never simple.
+      </p>
+      <p class="about-body">
+        My background in Public Health Policy gives me a foundation most product designers don't have: I understand how care is structured, where regulatory constraints live, and why clinical teams behave the way they do. That context makes me a stronger design partner across clinical, product, and executive stakeholders.
+      </p>
+      <p class="about-body">
+        I design for the people who run care — the advocates managing queues, the managers reading dashboards at 7am, the clinical leaders deploying new protocols. I've led workshops, mapped service blueprints, defined KPIs, and shipped modular systems. I care as much about the outcome as the artifact.
+      </p>
+
+      <div class="skills-list">
+        <span class="skill-chip">Figma</span>
+        <span class="skill-chip">Service Design</span>
+        <span class="skill-chip">Clinical Workflows</span>
+        <span class="skill-chip">Design Systems</span>
+        <span class="skill-chip">Data Visualization</span>
+        <span class="skill-chip">Brand Systems</span>
+        <span class="skill-chip">Executive Presentation</span>
+        <span class="skill-chip">Tableau · Looker</span>
+        <span class="skill-chip">Workshop Facilitation</span>
+        <span class="skill-chip">Service Blueprinting</span>
+        <span class="skill-chip">Adobe Creative Suite</span>
+        <span class="skill-chip">PowerPoint · Slides</span>
+        <span class="skill-chip">FigJam · Miro</span>
+        <span class="skill-chip">SQL · Analytics</span>
+      </div>
+
+      <div class="logos-label">Experience</div>
+      <div class="logos-row">
+        <span class="logo-badge">Amae Health</span>
+        <span class="logo-badge">Teladoc</span>
+        <span class="logo-badge">One Medical</span>
+        <span class="logo-badge">Cedars-Sinai</span>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <div class="logos-label" style="margin-bottom:0.75rem;">Education</div>
+        <div class="logo-badge" style="display:inline-block;">B.A. Public Health Policy · UC Irvine</div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2023–Now</div>
+          <div>
+            <div class="timeline-role">Staff Product Designer</div>
+            <div class="timeline-co">Amae Health</div>
+            <div class="timeline-note">Clinical tooling platform, member care workflows, roadmap strategy, KPI framework design</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021–2023</div>
+          <div>
+            <div class="timeline-role">Staff Product Designer, Clinical & Member Operations</div>
+            <div class="timeline-co">Teladoc Health</div>
+            <div class="timeline-note">Internal tools for care coordination, manager dashboards, escalation workflows, service design</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2018–2021</div>
+          <div>
+            <div class="timeline-role">Senior Brand & Communications Designer</div>
+            <div class="timeline-co">Teladoc Health</div>
+            <div class="timeline-note">Executive presentations, scalable slide systems, campaign creative, internal communications</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2016–2018</div>
+          <div>
+            <div class="timeline-role">Brand Designer</div>
+            <div class="timeline-co">One Medical</div>
+            <div class="timeline-note">Member communications, health education, brand identity, presentations</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2015</div>
+          <div>
+            <div class="timeline-role">Marketing & Design Intern</div>
+            <div class="timeline-co">Cedars-Sinai Health System</div>
+            <div class="timeline-note">Patient education, health communications, branded collateral</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="avail-badge">
+    <div class="avail-dot"></div>
+    Open to new opportunities
+  </div>
+  <h2 class="contact-title">Let's make something<br><em>worth hiring for</em></h2>
+  <p class="contact-sub">
+    Open to Staff Product Designer, Senior Brand Designer, and Presentation Design roles — particularly in healthcare, health-tech, or regulated industries.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:satyra.ca@gmail.com" class="btn btn-green">satyra.ca@gmail.com</a>
+    <a href="tel:5627171597" class="btn btn-ghost">(562) 717-1597</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-name">Satyra Miles — Staff Product Designer</span>
+  <span class="footer-copy">Los Angeles, CA · Available remotely</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i * 0.08) + 's';
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth active nav
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--accent)'
+        : '';
+    });
+  });
+</script>
+
+</body>
+</html>
