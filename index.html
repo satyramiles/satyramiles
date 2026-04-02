@@ -226,52 +226,6 @@
     border: 1px solid var(--paper-3);
   }
 
-  .hero-visual-art {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 2rem;
-    background:
-      linear-gradient(160deg, rgba(46,91,74,0.08) 0%, transparent 50%),
-      linear-gradient(to top, rgba(26,26,24,0.04) 0%, transparent 40%);
-  }
-
-  .photo-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .photo-placeholder-circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: var(--paper-3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .photo-placeholder-circle svg {
-    width: 48px;
-    height: 48px;
-    opacity: 0.3;
-  }
-
-  .photo-note {
-    font-size: 0.72rem;
-    color: var(--ink-4);
-    text-align: center;
-    font-style: italic;
-  }
-
   .hero-card {
     position: absolute;
     bottom: -1rem;
@@ -881,17 +835,7 @@
   </div>
   <div class="hero-right">
     <div class="hero-visual">
-      <div class="hero-visual-art">
-        <div class="photo-placeholder">
-          <div class="photo-placeholder-circle">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="18" r="9" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p class="photo-note">Add your photo here<br>in Carrd's image block</p>
-        </div>
-      </div>
+      <img src="satyra-headshot.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Satyra Miles">
     </div>
     <div class="hero-card">
       <div class="hero-card-label">Key outcome</div>
