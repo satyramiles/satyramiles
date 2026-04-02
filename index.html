@@ -226,7 +226,6 @@
     border: 1px solid var(--paper-3);
   }
 
-  /* Placeholder art for photo area */
   .hero-visual-art {
     position: absolute;
     inset: 0;
@@ -515,7 +514,6 @@
 
   .case-link:hover { border-color: var(--accent); }
 
-  /* Case visual mockup */
   .case-visual {
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -524,9 +522,6 @@
     aspect-ratio: 4/3;
     position: relative;
   }
-
-  /* ─── INLINE SVG MOCKUPS (replaced with img tags) ─────────────── */
-  /* .mockup-svg removed as we now use img */
 
   /* ─── GALLERY ─────────────────────────────────────────── */
   .gallery-grid {
@@ -553,11 +548,6 @@
     display: block;
     position: relative;
     overflow: hidden;
-  }
-
-  .gallery-thumb svg {
-    width: 100%;
-    height: 100%;
   }
 
   .gallery-overlay {
@@ -860,7 +850,6 @@
   }
 </style>
 </head>
-
 <body>
 
 <!-- NAV -->
@@ -1046,54 +1035,7 @@
       <!-- Item 1 — wide -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb" style="aspect-ratio: 16/7;">
-          <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-            <rect width="800" height="350" fill="#1a1a18"/>
-            <!-- Data viz: care pathway infographic -->
-            <rect x="0" y="0" width="800" height="350" fill="#1a1a18"/>
-            <!-- Title -->
-            <rect x="40" y="30" width="200" height="14" rx="3" fill="rgba(255,255,255,0.15)"/>
-            <rect x="40" y="52" width="130" height="8" rx="2" fill="rgba(255,255,255,0.07)"/>
-            <!-- Timeline flow -->
-            <rect x="40" y="110" width="720" height="2" fill="rgba(255,255,255,0.08)"/>
-            <!-- Step nodes -->
-            <circle cx="100" cy="111" r="18" fill="#2e5b4a"/>
-            <rect x="82" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="76" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-
-            <circle cx="220" cy="111" r="18" fill="#4a8a72"/>
-            <rect x="202" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="196" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-
-            <circle cx="340" cy="111" r="18" fill="#b89a5a"/>
-            <rect x="322" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="316" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-
-            <circle cx="460" cy="111" r="18" fill="#c4633a"/>
-            <rect x="442" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="436" y="150" width="50" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-
-            <circle cx="580" cy="111" r="18" fill="#4a8a72" opacity="0.7"/>
-            <rect x="562" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-
-            <circle cx="700" cy="111" r="18" fill="#2e5b4a" opacity="0.5"/>
-            <rect x="682" y="140" width="36" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-
-            <!-- Stat callouts -->
-            <rect x="40" y="200" width="160" height="90" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-            <rect x="56" y="216" width="80" height="22" rx="2" fill="rgba(46,91,74,0.4)"/>
-            <rect x="56" y="246" width="100" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-            <rect x="56" y="258" width="80" height="5" rx="2" fill="rgba(255,255,255,0.12)"/>
-
-            <rect x="220" y="200" width="160" height="90" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-            <rect x="236" y="216" width="80" height="22" rx="2" fill="rgba(184,154,90,0.4)"/>
-            <rect x="236" y="246" width="100" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-
-            <rect x="400" y="200" width="360" height="90" rx="8" fill="rgba(46,91,74,0.12)" stroke="rgba(46,91,74,0.3)" stroke-width="0.5"/>
-            <rect x="416" y="216" width="100" height="22" rx="2" fill="rgba(46,91,74,0.4)"/>
-            <rect x="416" y="246" width="140" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
-            <rect x="416" y="258" width="120" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-            <rect x="416" y="270" width="100" height="5" rx="2" fill="rgba(255,255,255,0.12)"/>
-          </svg>
+          <img src="gallery-01.png" style="width:100%;height:100%;object-fit:cover;" alt="Care Pathway Infographic">
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1106,47 +1048,7 @@
       <!-- Item 2 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-            <rect width="400" height="225" fill="#f5f3ee"/>
-            <!-- Brand identity sheet -->
-            <rect x="16" y="16" width="180" height="100" rx="6" fill="#2e5b4a"/>
-            <rect x="28" y="30" width="60" height="16" rx="3" fill="rgba(255,255,255,0.9)"/>
-            <rect x="28" y="54" width="100" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="28" y="66" width="80" height="5" rx="2" fill="rgba(255,255,255,0.3)"/>
-            <!-- Color swatches -->
-            <rect x="28" y="88" width="20" height="20" rx="3" fill="rgba(255,255,255,0.9)"/>
-            <rect x="54" y="88" width="20" height="20" rx="3" fill="rgba(184,154,90,0.8)"/>
-            <rect x="80" y="88" width="20" height="20" rx="3" fill="rgba(196,99,58,0.8)"/>
-            <rect x="106" y="88" width="20" height="20" rx="3" fill="rgba(255,255,255,0.3)"/>
-
-            <!-- Type specimens -->
-            <rect x="206" y="16" width="178" height="100" rx="6" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="218" y="28" width="120" height="16" rx="2" fill="#1a1a18" opacity="0.8"/>
-            <rect x="218" y="50" width="90" height="8" rx="2" fill="#1a1a18" opacity="0.5"/>
-            <rect x="218" y="64" width="140" height="5" rx="2" fill="#c5c2ba"/>
-            <rect x="218" y="74" width="120" height="5" rx="2" fill="#c5c2ba"/>
-            <rect x="218" y="84" width="100" height="5" rx="2" fill="#c5c2ba"/>
-            <rect x="218" y="100" width="50" height="8" rx="12" fill="rgba(46,91,74,0.12)"/>
-            <rect x="224" y="103" width="36" height="3" rx="1" fill="#2e5b4a"/>
-
-            <!-- Pattern tile -->
-            <rect x="16" y="126" width="120" height="84" rx="6" fill="#f0ede6" stroke="#e3e0d8" stroke-width="0.8"/>
-            <circle cx="50" cy="155" r="12" fill="rgba(46,91,74,0.15)" stroke="rgba(46,91,74,0.3)" stroke-width="0.5"/>
-            <circle cx="80" cy="168" r="8" fill="rgba(184,154,90,0.2)"/>
-            <circle cx="110" cy="152" r="5" fill="rgba(196,99,58,0.15)"/>
-            <rect x="28" y="186" width="90" height="5" rx="2" fill="#c5c2ba"/>
-            <rect x="28" y="196" width="70" height="5" rx="2" fill="#e3e0d8"/>
-
-            <!-- Icon set -->
-            <rect x="146" y="126" width="238" height="84" rx="6" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="158" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
-            <rect x="196" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
-            <rect x="234" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
-            <rect x="272" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
-            <rect x="310" y="140" width="30" height="30" rx="4" fill="#f5f3ee"/>
-            <rect x="158" y="176" width="30" height="4" rx="1" fill="#e3e0d8"/>
-            <rect x="196" y="176" width="30" height="4" rx="1" fill="#e3e0d8"/>
-          </svg>
+          <img src="gallery-02.png" style="width:100%;height:100%;object-fit:cover;" alt="Brand Identity System">
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1159,33 +1061,7 @@
       <!-- Item 3 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-            <rect width="400" height="225" fill="#fff"/>
-            <!-- Executive deck slide -->
-            <rect x="16" y="16" width="370" height="194" rx="8" fill="#1a1a18"/>
-            <!-- Slide header -->
-            <rect x="16" y="16" width="370" height="46" rx="8" fill="#2e5b4a"/>
-            <rect x="16" y="48" width="370" height="14" fill="#2e5b4a"/>
-            <rect x="32" y="26" width="180" height="10" rx="2" fill="rgba(255,255,255,0.85)"/>
-            <rect x="32" y="42" width="100" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
-            <!-- 2-col layout -->
-            <rect x="32" y="72" width="160" height="8" rx="2" fill="rgba(255,255,255,0.6)"/>
-            <rect x="32" y="86" width="140" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
-            <rect x="32" y="96" width="150" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
-            <rect x="32" y="106" width="130" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
-            <!-- right chart -->
-            <rect x="210" y="68" width="160" height="100" rx="6" fill="rgba(255,255,255,0.05)"/>
-            <!-- Donut chart approximation -->
-            <circle cx="290" cy="118" r="36" fill="none" stroke="rgba(46,91,74,0.8)" stroke-width="16" stroke-dasharray="120 226"/>
-            <circle cx="290" cy="118" r="36" fill="none" stroke="rgba(74,138,114,0.6)" stroke-width="16" stroke-dasharray="70 226" stroke-dashoffset="-120"/>
-            <circle cx="290" cy="118" r="36" fill="none" stroke="rgba(184,154,90,0.5)" stroke-width="16" stroke-dasharray="36 226" stroke-dashoffset="-190"/>
-            <rect x="278" y="113" width="24" height="10" rx="2" fill="rgba(255,255,255,0.7)"/>
-            <!-- Bottom metric strip -->
-            <rect x="32" y="178" width="340" height="22" rx="4" fill="rgba(255,255,255,0.04)"/>
-            <rect x="42" y="185" width="60" height="5" rx="1" fill="rgba(255,255,255,0.2)"/>
-            <rect x="142" y="185" width="60" height="5" rx="1" fill="rgba(255,255,255,0.2)"/>
-            <rect x="242" y="185" width="60" height="5" rx="1" fill="rgba(255,255,255,0.2)"/>
-          </svg>
+          <img src="gallery-03.png" style="width:100%;height:100%;object-fit:cover;" alt="Executive Presentation Design">
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1198,71 +1074,7 @@
       <!-- Item 4 — wide -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb" style="aspect-ratio: 16/7;">
-          <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-            <rect width="800" height="350" fill="#f5f3ee"/>
-            <!-- Data dashboard wide view -->
-            <!-- Left KPIs -->
-            <rect x="20" y="20" width="150" height="310" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="32" y="32" width="80" height="8" rx="2" fill="#1a1a18" opacity="0.6"/>
-            <rect x="32" y="52" width="120" height="60" rx="6" fill="#f5f3ee"/>
-            <rect x="44" y="64" width="60" height="24" rx="2" fill="#2e5b4a" opacity="0.7"/>
-            <rect x="44" y="94" width="80" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="32" y="122" width="120" height="60" rx="6" fill="#f5f3ee"/>
-            <rect x="44" y="134" width="60" height="24" rx="2" fill="#b89a5a" opacity="0.7"/>
-            <rect x="44" y="164" width="80" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="32" y="192" width="120" height="60" rx="6" fill="#f5f3ee"/>
-            <rect x="44" y="204" width="60" height="24" rx="2" fill="#c4633a" opacity="0.7"/>
-            <rect x="44" y="234" width="80" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="32" y="272" width="120" height="48" rx="6" fill="#2e5b4a"/>
-            <rect x="44" y="284" width="60" height="24" rx="2" fill="rgba(255,255,255,0.3)"/>
-
-            <!-- Center: big chart -->
-            <rect x="184" y="20" width="400" height="200" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="198" y="32" width="120" height="8" rx="2" fill="#1a1a18" opacity="0.6"/>
-            <rect x="198" y="48" width="80" height="5" rx="2" fill="#9b9b92"/>
-            <!-- Area chart -->
-            <polyline points="198,185 244,160 290,168 336,142 382,150 428,128 474,135 520,112 540,120 566,100 584,108" fill="none" stroke="#2e5b4a" stroke-width="2" stroke-linecap="round"/>
-            <polygon points="198,185 244,160 290,168 336,142 382,150 428,128 474,135 520,112 540,120 566,100 584,108 584,200 198,200" fill="rgba(46,91,74,0.07)"/>
-            <rect x="198" y="200" width="384" height="1" fill="#e3e0d8"/>
-            <!-- x-axis markers -->
-            <rect x="198" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
-            <rect x="260" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
-            <rect x="322" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
-            <rect x="384" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
-            <rect x="446" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
-            <rect x="508" y="206" width="24" height="4" rx="1" fill="#c5c2ba"/>
-
-            <!-- Center bottom: table -->
-            <rect x="184" y="230" width="400" height="100" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="198" y="242" width="90" height="7" rx="2" fill="#1a1a18" opacity="0.6"/>
-            <rect x="184" y="258" width="400" height="1" fill="#e3e0d8"/>
-            <rect x="198" y="266" width="80" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="420" y="264" width="50" height="8" rx="12" fill="rgba(46,91,74,0.1)"/>
-            <rect x="427" y="267" width="36" height="3" rx="1" fill="#2e5b4a"/>
-            <rect x="198" y="280" width="60" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="420" y="278" width="50" height="8" rx="12" fill="rgba(196,99,58,0.1)"/>
-            <rect x="427" y="281" width="36" height="3" rx="1" fill="#c4633a"/>
-            <rect x="198" y="294" width="70" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="420" y="292" width="50" height="8" rx="12" fill="rgba(184,154,90,0.12)"/>
-            <rect x="427" y="295" width="36" height="3" rx="1" fill="#b89a5a"/>
-            <rect x="198" y="308" width="65" height="5" rx="2" fill="#9b9b92"/>
-
-            <!-- Right: two small charts -->
-            <rect x="598" y="20" width="182" height="145" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="610" y="32" width="80" height="7" rx="2" fill="#1a1a18" opacity="0.6"/>
-            <!-- Sparklines -->
-            <polyline points="610,110 630,100 650,105 670,88 690,92 710,80 730,85 760,72" fill="none" stroke="#2e5b4a" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="610" y="124" width="160" height="1" fill="#e3e0d8"/>
-            <rect x="610" y="130" width="40" height="5" rx="2" fill="#c5c2ba"/>
-            <rect x="610" y="140" width="60" height="5" rx="2" fill="rgba(46,91,74,0.4)"/>
-
-            <rect x="598" y="175" width="182" height="155" rx="8" fill="#2e5b4a"/>
-            <rect x="610" y="187" width="80" height="7" rx="2" fill="rgba(255,255,255,0.6)"/>
-            <!-- Donut -->
-            <circle cx="689" cy="265" r="40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="18"/>
-            <circle cx="689" cy="265" r="40" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="18" stroke-dasharray="140 251" stroke-linecap="round"/>
-            <rect x="676" y="258" width="26" height="14" rx="2" fill="rgba(255,255,255,0.9)"/>
-          </svg>
+          <img src="gallery-04.png" style="width:100%;height:100%;object-fit:cover;" alt="Data Visualization Dashboard">
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1275,49 +1087,7 @@
       <!-- Item 5 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-            <rect width="400" height="225" fill="#2e5b4a"/>
-            <!-- Service blueprint / workflow map -->
-            <rect x="16" y="16" width="368" height="14" rx="3" fill="rgba(255,255,255,0.12)"/>
-            <rect x="16" y="16" width="120" height="14" rx="3" fill="rgba(255,255,255,0.3)"/>
-
-            <!-- Swimlanes -->
-            <rect x="16" y="42" width="70" height="164" rx="4" fill="rgba(255,255,255,0.06)"/>
-            <rect x="22" y="54" width="55" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
-            <rect x="22" y="66" width="55" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
-
-            <!-- Process steps across the top -->
-            <rect x="96" y="42" width="288" height="30" rx="0" fill="rgba(255,255,255,0.04)"/>
-            <rect x="102" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="170" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="238" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="306" y="50" width="50" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
-
-            <!-- Row 1 (member actions) -->
-            <rect x="96" y="80" width="288" height="36" rx="0" fill="rgba(255,255,255,0.03)"/>
-            <rect x="102" y="88" width="48" height="20" rx="4" fill="rgba(184,154,90,0.5)"/>
-            <rect x="170" y="88" width="48" height="20" rx="4" fill="rgba(184,154,90,0.5)"/>
-            <rect x="238" y="88" width="48" height="20" rx="4" fill="rgba(184,154,90,0.3)"/>
-
-            <!-- Row 2 (care team) -->
-            <rect x="96" y="120" width="288" height="36" rx="0" fill="rgba(255,255,255,0.02)"/>
-            <rect x="102" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.6)"/>
-            <rect x="170" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.6)"/>
-            <rect x="238" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.6)"/>
-            <rect x="306" y="128" width="48" height="20" rx="4" fill="rgba(46,91,74,0.4)"/>
-
-            <!-- Row 3 (system) -->
-            <rect x="96" y="160" width="288" height="36" rx="0" fill="rgba(255,255,255,0.02)"/>
-            <rect x="238" y="168" width="48" height="20" rx="4" fill="rgba(196,99,58,0.5)"/>
-            <rect x="306" y="168" width="48" height="20" rx="4" fill="rgba(196,99,58,0.5)"/>
-
-            <!-- Connectors (horizontal lines) -->
-            <line x1="150" y1="98" x2="170" y2="98" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
-            <line x1="218" y1="98" x2="238" y2="98" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
-            <line x1="150" y1="138" x2="170" y2="138" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
-            <line x1="218" y1="138" x2="238" y2="138" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
-            <line x1="286" y1="138" x2="306" y2="138" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
-          </svg>
+          <img src="gallery-05.png" style="width:100%;height:100%;object-fit:cover;" alt="Service Blueprint">
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1330,58 +1100,7 @@
       <!-- Item 6 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-            <rect width="400" height="225" fill="#f0ede6"/>
-            <!-- Healthcare infographic -->
-            <rect x="16" y="16" width="170" height="194" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="28" y="28" width="100" height="10" rx="2" fill="#1a1a18" opacity="0.7"/>
-            <rect x="28" y="44" width="140" height="5" rx="2" fill="#c5c2ba"/>
-            <rect x="28" y="54" width="120" height="5" rx="2" fill="#e3e0d8"/>
-
-            <!-- Icon + text rows -->
-            <rect x="28" y="72" width="16" height="16" rx="4" fill="#2e5b4a" opacity="0.7"/>
-            <rect x="52" y="75" width="90" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="52" y="84" width="70" height="4" rx="2" fill="#e3e0d8"/>
-
-            <rect x="28" y="100" width="16" height="16" rx="4" fill="#b89a5a" opacity="0.7"/>
-            <rect x="52" y="103" width="90" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="52" y="112" width="70" height="4" rx="2" fill="#e3e0d8"/>
-
-            <rect x="28" y="128" width="16" height="16" rx="4" fill="#c4633a" opacity="0.7"/>
-            <rect x="52" y="131" width="90" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="52" y="140" width="70" height="4" rx="2" fill="#e3e0d8"/>
-
-            <rect x="28" y="156" width="16" height="16" rx="4" fill="#4a8a72" opacity="0.7"/>
-            <rect x="52" y="159" width="90" height="5" rx="2" fill="#9b9b92"/>
-            <rect x="52" y="168" width="70" height="4" rx="2" fill="#e3e0d8"/>
-
-            <rect x="16" y="178" width="170" height="32" rx="4" fill="#2e5b4a"/>
-            <rect x="28" y="188" width="100" height="8" rx="2" fill="rgba(255,255,255,0.5)"/>
-            <rect x="28" y="198" width="70" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
-
-            <!-- Right panel -->
-            <rect x="198" y="16" width="186" height="90" rx="8" fill="#2e5b4a"/>
-            <rect x="210" y="28" width="80" height="10" rx="2" fill="rgba(255,255,255,0.8)"/>
-            <!-- Big stat -->
-            <rect x="210" y="46" width="80" height="34" rx="3" fill="rgba(255,255,255,0.2)"/>
-            <rect x="220" y="56" width="56" height="18" rx="2" fill="rgba(255,255,255,0.8)"/>
-            <rect x="210" y="88" width="100" height="5" rx="2" fill="rgba(255,255,255,0.3)"/>
-
-            <rect x="198" y="116" width="90" height="94" rx="8" fill="#fff" stroke="#e3e0d8" stroke-width="0.8"/>
-            <rect x="210" y="128" width="60" height="7" rx="2" fill="#1a1a18" opacity="0.6"/>
-            <!-- Small bar -->
-            <rect x="210" y="144" width="12" height="52" rx="2" fill="rgba(46,91,74,0.2)"/>
-            <rect x="228" y="130" width="12" height="66" rx="2" fill="rgba(46,91,74,0.4)"/>
-            <rect x="246" y="124" width="12" height="72" rx="2" fill="#2e5b4a"/>
-            <rect x="264" y="136" width="12" height="60" rx="2" fill="rgba(46,91,74,0.5)"/>
-            <rect x="210" y="196" width="66" height="1" fill="#e3e0d8"/>
-
-            <rect x="298" y="116" width="86" height="94" rx="8" fill="#b89a5a"/>
-            <rect x="310" y="128" width="55" height="7" rx="2" fill="rgba(255,255,255,0.6)"/>
-            <rect x="310" y="144" width="40" height="28" rx="2" fill="rgba(255,255,255,0.3)"/>
-            <rect x="310" y="178" width="55" height="5" rx="2" fill="rgba(255,255,255,0.4)"/>
-            <rect x="310" y="190" width="45" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
-          </svg>
+          <img src="gallery-06.png" style="width:100%;height:100%;object-fit:cover;" alt="Health Education Infographic">
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
