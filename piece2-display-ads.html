@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Display Ads — AxiomMarkets Campaign</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #080810;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+    gap: 48px;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #3a3a50;
+    align-self: flex-start;
+    max-width: 960px;
+    width: 100%;
+  }
+
+  /* ────────────────────────────────
+     MEDIUM RECTANGLE  300 × 250
+  ──────────────────────────────── */
+  .ad-rect {
+    width: 300px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background: #060610;
+    border: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+
+  /* Scanline texture */
+  .ad-rect::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.012) 2px,
+      rgba(255,255,255,0.012) 4px
+    );
+    z-index: 8;
+    pointer-events: none;
+  }
+
+  /* Top accent */
+  .ad-rect::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0033cc, #00d4ff, #0033cc);
+    z-index: 10;
+  }
+
+  .rect-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    padding: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* mini chart canvas */
+  .mini-chart {
+    position: absolute;
+    bottom: 44px; left: 0; right: 0;
+    height: 100px;
+    z-index: 3;
+    opacity: 0.9;
+  }
+
+  /* Glow under chart */
+  .chart-glow {
+    position: absolute;
+    bottom: 44px; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(0deg, rgba(0,102,255,0.12) 0%, transparent 100%);
+    z-index: 2;
+  }
+
+  .rect-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .brand-sm {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .brand-dot {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #0044dd, #00aaff);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .brand-dot svg { width: 10px; height: 10px; }
+
+  .brand-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: .04em;
+  }
+
+  /* Live indicator */
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    color: #00d97e;
+    letter-spacing: .06em;
+  }
+
+  .live-dot {
+    width: 5px; height: 5px;
+    background: #00d97e;
+    border-radius: 50%;
+    animation: blink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  /* Ticker display */
+  .ticker-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .tick-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 3px;
+    padding: 7px 9px;
+  }
+
+  .tick-card-sym {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: .06em;
+  }
+
+  .tick-card-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top: 1px;
+  }
+
+  .tick-card-change {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    margin-top: 1px;
+  }
+
+  .up { color: #00d97e; }
+  .dn { color: #ff4060; }
+
+  /* Main stat block */
+  .main-stat {
+    position: absolute;
+    left: 20px; bottom: 56px;
+    z-index: 6;
+  }
+
+  .main-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -.03em;
+    line-height: 1;
+  }
+
+  .main-num span {
+    font-size: 14px;
+    color: #00d4ff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+  }
+
+  .main-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 3px;
+    letter-spacing: .06em;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* CTA bar */
+  .rect-cta {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 44px;
+    background: linear-gradient(90deg, #0044dd, #0088ff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 9;
+    cursor: pointer;
+  }
+
+  .cta-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: .04em;
+  }
+
+  .cta-arrow {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+  }
+
+
+  /* ────────────────────────────────
+     LEADERBOARD  728 × 90
+  ──────────────────────────────── */
+  .ad-leader {
+    width: 728px;
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    background: #060610;
+    border: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+
+  .ad-leader::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent, transparent 2px,
+      rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px
+    );
+    z-index: 8;
+    pointer-events: none;
+  }
+
+  .ad-leader::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #0066ff, #00d4ff);
+    z-index: 10;
+  }
+
+  /* Glow orb inside leader */
+  .leader-orb {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,80,200,0.22) 0%, transparent 70%);
+    top: -80px; left: 140px;
+    z-index: 1;
+  }
+
+  .leader-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    padding: 0 24px 0 20px;
+    gap: 0;
+  }
+
+  /* Brand column */
+  .leader-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 130px;
+    padding-right: 24px;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .leader-brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: .02em;
+  }
+
+  .leader-tagline {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: .04em;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Ticker columns */
+  .leader-tickers {
+    display: flex;
+    gap: 0;
+    padding: 0 24px;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    flex: 1;
+  }
+
+  .leader-tick {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 90px;
+    padding: 0 16px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .leader-tick:first-child { padding-left: 0; }
+  .leader-tick:last-child { border-right: none; }
+
+  .lt-sym {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: .08em;
+  }
+
+  .lt-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  .lt-change {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  /* Sparkline mini */
+  .lt-spark {
+    width: 40px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .leader-right {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 24px;
+    min-width: 160px;
+  }
+
+  .leader-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -.01em;
+    line-height: 1.1;
+  }
+
+  .leader-headline em {
+    font-style: normal;
+    background: linear-gradient(90deg, #00d4ff, #4d7aff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .leader-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(90deg, #0044dd, #0088ff);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 3px;
+    letter-spacing: .04em;
+    width: fit-content;
+  }
+
+  /* ────────────────────────────────
+     SMALL SQUARE  250 × 250
+  ──────────────────────────────── */
+  .ad-small {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background: #060610;
+    border: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+
+  .ad-small::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px
+    );
+    z-index: 8; pointer-events: none;
+  }
+
+  .ad-small::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #0033cc, #00d4ff, #0033cc);
+    z-index: 10;
+  }
+
+  .small-inner {
+    position: absolute; inset: 0; z-index: 5;
+    padding: 18px 18px 0;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .small-top {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .small-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+
+  .small-headline em {
+    font-style: normal;
+    color: #00d4ff;
+  }
+
+  .small-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  /* Stat pill row */
+  .stat-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .stat-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 3px;
+    padding: 6px 10px;
+  }
+
+  .sp-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: .06em;
+  }
+
+  .sp-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #00d4ff;
+  }
+
+  .small-cta {
+    height: 40px;
+    background: linear-gradient(90deg, #0044dd, #0088ff);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 18px;
+    margin: 0 -18px;
+    position: relative; bottom: 0; z-index: 9;
+  }
+
+  .small-cta-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: #fff; letter-spacing: .04em;
+  }
+
+  /* Size grid */
+  .size-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .size-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .size-tag {
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #3a3a50;
+    font-weight: 500;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* chart animation for 300x250 */
+  @keyframes drawLine {
+    from { stroke-dashoffset: 400; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .animated-line {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: drawLine 2s ease-out forwards;
+  }
+
+  /* pulsing data point */
+  @keyframes ping {
+    0%, 100% { r: 3; opacity: 1; }
+    50% { r: 5; opacity: 0.6; }
+  }
+
+  .pulse-dot { animation: ping 1.5s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<div class="label">Speculative work — Display Ad Campaign · AxiomMarkets · Three IAB Standard Sizes</div>
+
+<!-- 300x250 Medium Rectangle -->
+<div class="size-row">
+  <div class="size-col">
+    <div class="size-tag">300 × 250 · Medium Rectangle</div>
+    <div class="ad-rect">
+      <div class="chart-glow"></div>
+
+      <!-- Animated chart -->
+      <div class="mini-chart">
+        <svg width="300" height="100" viewBox="0 0 300 100" fill="none">
+          <!-- Area fill -->
+          <defs>
+            <linearGradient id="fillG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0066ff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#0066ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid -->
+          <line x1="0" y1="25" x2="300" y2="25" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="75" x2="300" y2="75" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <!-- Area -->
+          <polygon
+            points="0,90 30,80 60,85 90,70 120,60 150,45 180,30 210,20 240,25 270,10 300,5 300,100 0,100"
+            fill="url(#fillG)"/>
+          <!-- Line -->
+          <polyline class="animated-line"
+            points="0,90 30,80 60,85 90,70 120,60 150,45 180,30 210,20 240,25 270,10 300,5"
+            stroke="#0088ff" stroke-width="1.5" fill="none"/>
+          <!-- Live dot at end -->
+          <circle class="pulse-dot" cx="300" cy="5" r="3" fill="#00d4ff"/>
+          <circle cx="300" cy="5" r="6" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <div class="rect-inner">
+        <div class="rect-header">
+          <div class="brand-sm">
+            <div class="brand-dot">
+              <svg viewBox="0 0 10 10" fill="none">
+                <path d="M1 7.5L3.5 4.5L5.5 6L9 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="brand-text">AxiomMarkets</div>
+          </div>
+          <div class="live-badge">
+            <div class="live-dot"></div>
+            LIVE
+          </div>
+        </div>
+
+        <div class="ticker-display">
+          <div class="tick-card">
+            <div class="tick-card-sym">ES</div>
+            <div class="tick-card-price">5,284.25</div>
+            <div class="tick-card-change up">▲ +22.50 (0.43%)</div>
+          </div>
+          <div class="tick-card">
+            <div class="tick-card-sym">NQ</div>
+            <div class="tick-card-price">18,441</div>
+            <div class="tick-card-change dn">▼ −21.00 (0.11%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-stat">
+        <div class="main-num">&lt;0.4<span>ms</span></div>
+        <div class="main-label">EXECUTION_SPEED</div>
+      </div>
+
+      <div class="rect-cta">
+        <div class="cta-text">Trade smarter. Start free.</div>
+        <div class="cta-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 250x250 Square -->
+  <div class="size-col">
+    <div class="size-tag">250 × 250 · Square</div>
+    <div class="ad-small">
+      <div class="small-inner">
+        <div class="small-top">
+          <div class="brand-sm">
+            <div class="brand-dot">
+              <svg viewBox="0 0 10 10" fill="none">
+                <path d="M1 7.5L3.5 4.5L5.5 6L9 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="brand-text">AxiomMarkets</div>
+          </div>
+
+          <div class="small-headline">
+            Execute at<br><em>full speed.</em>
+          </div>
+          <div class="small-sub">
+            Professional futures tools built for traders who demand more.
+          </div>
+
+          <div class="stat-pills">
+            <div class="stat-pill">
+              <span class="sp-label">EXEC_TIME</span>
+              <span class="sp-val">&lt; 0.4ms</span>
+            </div>
+            <div class="stat-pill">
+              <span class="sp-label">COMMISSION</span>
+              <span class="sp-val">$0.00</span>
+            </div>
+            <div class="stat-pill">
+              <span class="sp-label">MARKETS</span>
+              <span class="sp-val">40+ instruments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="small-cta">
+          <div class="small-cta-text">Open free account</div>
+          <span style="color:rgba(255,255,255,0.6);font-size:14px">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 728x90 Leaderboard -->
+<div class="label" style="max-width:728px">728 × 90 · Leaderboard</div>
+
+<div class="ad-leader">
+  <div class="leader-orb"></div>
+
+  <div class="leader-inner">
+    <!-- Brand -->
+    <div class="leader-brand">
+      <div class="brand-sm" style="gap:6px">
+        <div class="brand-dot">
+          <svg viewBox="0 0 10 10" fill="none">
+            <path d="M1 7.5L3.5 4.5L5.5 6L9 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="leader-brand-name">Axiom</div>
+      </div>
+      <div class="leader-tagline">FUTURES PLATFORM</div>
+    </div>
+
+    <!-- Live tickers -->
+    <div class="leader-tickers">
+      <div class="leader-tick">
+        <div class="lt-sym">ES · S&P 500</div>
+        <div class="lt-price">5,284.25</div>
+        <div class="lt-change up">▲ 0.43%</div>
+      </div>
+      <div class="leader-tick">
+        <div class="lt-sym">NQ · NASDAQ</div>
+        <div class="lt-price">18,441.00</div>
+        <div class="lt-change dn">▼ 0.11%</div>
+      </div>
+      <div class="leader-tick">
+        <div class="lt-sym">CL · CRUDE OIL</div>
+        <div class="lt-price">78.34</div>
+        <div class="lt-change up">▲ 1.08%</div>
+      </div>
+      <div class="leader-tick">
+        <div class="lt-sym">GC · GOLD</div>
+        <div class="lt-price">2,318.40</div>
+        <div class="lt-change up">▲ 0.29%</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="leader-right">
+      <div class="leader-headline">Trade at the<br>speed of <em>now.</em></div>
+      <div class="leader-cta">Start free →</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
