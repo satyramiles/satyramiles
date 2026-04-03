@@ -490,7 +490,6 @@
     overflow: hidden;
     background: var(--paper-2);
     border: 1px solid var(--paper-3);
-    cursor: pointer;
     transition: transform 0.2s;
   }
 
@@ -506,6 +505,24 @@
     overflow: hidden;
   }
 
+  .gallery-thumb a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover .gallery-thumb img {
+    transform: scale(1.02);
+  }
+
   .gallery-overlay {
     position: absolute;
     inset: 0;
@@ -514,6 +531,7 @@
     align-items: flex-end;
     padding: 1.25rem;
     transition: background 0.3s;
+    pointer-events: none; /* So clicks pass through to the link */
   }
 
   .gallery-item:hover .gallery-overlay {
@@ -969,7 +987,7 @@
   </div>
 </div>
 
-<!-- GALLERY (UNIFORM GRID) -->
+<!-- GALLERY (UNIFORM GRID WITH CLICKABLE IMAGES) -->
 <section id="gallery" style="background: var(--paper-2); max-width: 100%; padding: 6rem 3rem;">
   <div style="max-width: 1200px; margin: 0 auto;">
     <div class="section-eyebrow">Selected Work</div>
@@ -980,7 +998,9 @@
       <!-- Gallery 1 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <img src="gallery-01.png" style="width:100%;height:100%;object-fit:cover;" alt="Care Pathway Infographic">
+          <a href="gallery-01.png" target="_blank">
+            <img src="gallery-01.png" alt="Care Pathway Infographic">
+          </a>
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -992,7 +1012,9 @@
       <!-- Gallery 2 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <img src="gallery-02.png" style="width:100%;height:100%;object-fit:cover;" alt="Brand Identity System">
+          <a href="gallery-02.png" target="_blank">
+            <img src="gallery-02.png" alt="Brand Identity System">
+          </a>
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1004,7 +1026,9 @@
       <!-- Gallery 3 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <img src="gallery-03.png" style="width:100%;height:100%;object-fit:cover;" alt="Executive Presentation Design">
+          <a href="gallery-03.png" target="_blank">
+            <img src="gallery-03.png" alt="Executive Presentation Design">
+          </a>
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1016,7 +1040,9 @@
       <!-- Gallery 4 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <img src="gallery-04.png" style="width:100%;height:100%;object-fit:cover;" alt="Data Visualization Dashboard">
+          <a href="gallery-04.png" target="_blank">
+            <img src="gallery-04.png" alt="Data Visualization Dashboard">
+          </a>
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1028,7 +1054,9 @@
       <!-- Gallery 5 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <img src="gallery-05.png" style="width:100%;height:100%;object-fit:cover;" alt="Service Blueprint">
+          <a href="gallery-05.png" target="_blank">
+            <img src="gallery-05.png" alt="Service Blueprint">
+          </a>
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
@@ -1040,7 +1068,9 @@
       <!-- Gallery 6 -->
       <div class="gallery-item reveal">
         <div class="gallery-thumb">
-          <img src="gallery-06.png" style="width:100%;height:100%;object-fit:cover;" alt="Health Education Infographic">
+          <a href="gallery-06.png" target="_blank">
+            <img src="gallery-06.png" alt="Health Education Infographic">
+          </a>
         </div>
         <div class="gallery-overlay">
           <div class="gallery-meta">
